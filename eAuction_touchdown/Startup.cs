@@ -1,4 +1,5 @@
 using eAuction_touchdown.Data;
+using eAuction_touchdown.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,10 @@ namespace eAuction_touchdown
 			services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
 			services.AddControllersWithViews();
+
+			services.AddScoped<IAccountRepository, AccountRepository>();
+
+
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
