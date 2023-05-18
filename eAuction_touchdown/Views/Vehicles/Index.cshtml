@@ -25,7 +25,7 @@
                                     <h5 class="card-title">
                                         Lot Number:
                                         @item.LotNumber
-                                        <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                                       
 
                                     </h5>
                                 </p>
@@ -52,8 +52,8 @@
                         <div class="col-md-12">
                             <div class="card-footer ">
                                 <p class="card-text">
-                                    <a class="btn btn-outline-primary float-right"><i class="bi bi-eye-fill"></i> Show Details </a>
-                                    <a class="btn btn-success text-white" id="bidButton">Place Bid</a>
+                                   
+                                    <a class="btn btn-success text-white" id="bidButton" style="width:60%">Place Bid</a>
                                     <span id="countdownTimer"></span>
                                 </p>
                             </div>
@@ -68,7 +68,7 @@
         <script>
             var bidButton = document.getElementById("bidButton");
             var countdownTimer = document.getElementById("countdownTimer");
-            var endTime = new Date("2023-05-02T19:27:59Z"); // Replace with your end time in UTC format
+            var endTime = new Date("2023-05-20T19:27:59Z"); // Replace with your end time in UTC format
 
             function updateTimer() {
                 var now = new Date();

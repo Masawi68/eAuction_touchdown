@@ -1,4 +1,5 @@
 using eAuction_touchdown.Data;
+using eAuction_touchdown.Models;
 using eAuction_touchdown.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,11 +32,21 @@ namespace eAuction_touchdown
 			//DbContext configuration
 			services.AddDbContext<AppDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnectionString")));
 
-			services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+			services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
 			services.AddControllersWithViews();
 
 			services.AddScoped<IAccountRepository, AccountRepository>();
+
+			services.Configure<IdentityOptions>(options => 
+			{
+				options.Password.RequiredLength = 5;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase= false;
+            });
 
 
 		}
