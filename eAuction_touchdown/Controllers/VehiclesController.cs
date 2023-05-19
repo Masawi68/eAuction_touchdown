@@ -17,7 +17,6 @@ namespace eAuction_touchdown.Controllers
 		{
 			var allVehicles = await _context.Vehicles.ToListAsync();
 			return View(allVehicles);
-
 		}
 	}
 }
