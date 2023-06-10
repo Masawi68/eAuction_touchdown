@@ -11,54 +11,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/js/bootstrap-icons.min.js"></script>
+    <script>
+        function startTimer(lotNumber, duration) {
+            var timerElement = document.getElementById("timer-" + lotNumber);
+
+            var timer = duration;
+            var days, hours, minutes, seconds;
+
+            var intervalId = setInterval(function () {
+                days = parseInt(timer / (60 * 60 * 24), 10);
+                hours = parseInt((timer / (60 * 60)) % 24, 10);
+                minutes = parseInt((timer / 60) % 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                days = days < 10 ? "0" + days : days;
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                timerElement.textContent = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+                if (--timer < 0) {
+                    clearInterval(intervalId);
+                    timerElement.textContent = "Expired";
+                }
+            }, 1000);
+        }
+
+        function openBidModal(lotNumber) {
+            $('#bidModal-' + lotNumber).modal('show');
+        }
+
+        function placeBid(lotNumber) {
+            var bidInput = $('#bidInput-' + lotNumber);
+            var bidPrice = bidInput.val();
+            var startBidPrice = parseFloat($('#startBidPrice-' + lotNumber).text());
+
+            if (parseFloat(bidPrice) < startBidPrice) {
+                alert("Bid price cannot be below the start bid price.");
+                return false;
+            }
+
+            // Perform further validation or submit the bid
+            // ...
+
+            // Close the modal
+           $('#bidModal-' + lotNumber).modal('hide');
+                 return true;
+        }
+
+        function updateBidButton(lotNumber) {
+            var bidInput = $('#bidInput-' + lotNumber);
+            var bidPrice = parseFloat(bidInput.val());
+            var startBidPrice = parseFloat($('#startBidPrice-' + lotNumber).text());
+            var submitButton = $('#bidSubmitButton-' + lotNumber);
+
+            if (bidPrice < startBidPrice) {
+                submitButton.prop('disabled', true);
+            } else {
+                submitButton.prop('disabled', false);
+            }
+        }
+    </script>
 </head>
+<body>
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-md-4 col-xs-6 border-primary mb-3">
-                <div class="card mb-3" style="max-width: 560px;">
-                    <div class="row g-0">
+            <div class="col-md-4 col-xs-6 border-primary mb-3" >
+                <div class="card mb-3" style="max-width: 560px;background-image: url('images/Trans_hammer.png');background-size:40%;background-repeat:no-repeat; background-position:bottom;">
+                    <div class="row g-0" >
                         <div class="col-md-12">
-                            <div class="card-header text-white bg-info">
+                            <div class="card-header text-white" style="background-color:#006633">
                                 <p class="card-text">
                                     <h5 class="card-title">
                                         Lot Number:
                                         @item.LotNumber
-                                       
-
                                     </h5>
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" >
                             <img src="@item.ProductPicURL" width="100%" alt="@item.LotNumber">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" >
                             <div class="card-body">
-                                <p class="card-text"><b>Vehicle Category:</b>@item.VCategory</p>
-                                <p class="card-text"><b>Discription: </b>@item.Discription</p>
+                                <p class="card-text"><b>Category:</b>@item.VCategory</p>
+                                <p class="card-text"><b>Description: </b>@item.Discription</p>
                                 <p class="card-text"><b>Year: </b>@item.Year</p>
                                 <p class="card-text"><b>Make: </b>@item.Make</p>
                                 <p class="card-text"><b>Model: </b>@item.Model</p>
                                 <p class="card-text"><b>Start Bid Price: </b>@item.StartBidPrice</p>
                                 <p class="card-text ">
-                                    <b>Status: </b>
-                                    Staus Sample
+                                    
                                 </p>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="card-footer ">
+                            <div class="card-footer" style="background-color:#D7F7E7">
                                 <p class="card-text">
-                                   
-                                    <a class="btn btn-success text-white" id="bidButton" style="width:60%">Place Bid</a>
-                                    <span id="countdownTimer"></span>
+                                    <a class="btn btn-success text-white bid-button" style="width:60%" onclick="openBidModal('@item.LotNumber')">Place Bid</a>
+                                    <span id="timer-@item.LotNumber"></span>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Bid Modal -->
+            <div class="modal fade" id="bidModal-@item.LotNumber" tabindex="-1" role="dialog" aria-labelledby="bidModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="bidModalLabel">Place Bid</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="bidInput-@item.LotNumber">Bid Price:</label>
+                                <input type="number" class="form-control" id="bidInput-@item.LotNumber" placeholder="Enter bid price" oninput="updateBidButton('@item.LotNumber')">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="bidSubmitButton-@item.LotNumber" onclick="placeBid('@item.LotNumber')" disabled>Submit Bid</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                startTimer("@item.LotNumber", 300);
+                updateBidButton("@item.LotNumber");
+            </script>
         }
     </div>
 </body>

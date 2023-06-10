@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using eAuction_touchdown.Data;
@@ -9,9 +10,10 @@ using eAuction_touchdown.Data;
 namespace eAuction_touchdown.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230610114945_bidder")]
+    partial class bidder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -275,9 +277,6 @@ namespace eAuction_touchdown.Migrations
 
                     b.Property<DateTime>("BidEndTime")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<decimal>("BidderAmount")
-                        .HasColumnType("numeric");
 
                     b.Property<string>("Discription")
                         .HasColumnType("text");

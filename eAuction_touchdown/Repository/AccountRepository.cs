@@ -32,6 +32,11 @@ namespace eAuction_touchdown.Repository
            var result = await _signInManager.PasswordSignInAsync(signInModel.Email, signInModel.Password, signInModel.RememberMe, false);
 			return result;
         }
+
+		public async Task SignOutAsync()
+		{
+			await _signInManager.SignOutAsync();
+		}
     }
 }
  
