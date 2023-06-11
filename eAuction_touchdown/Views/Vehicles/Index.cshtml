@@ -41,6 +41,9 @@
                 if (--timer < 0) {
                     clearInterval(intervalId);
                     timerElement.textContent = "Expired";
+
+                    var bidButton = $('#bidButton-' + lotNumber);
+                    bidButton.prop('disabled', true);
                 }
             }, 1000);
         }
@@ -109,15 +112,13 @@
                                 <p class="card-text"><b>Make: </b>@item.Make</p>
                                 <p class="card-text"><b>Model: </b>@item.Model</p>
                                 <p class="card-text"><b>Start Bid Price: </b>@item.StartBidPrice</p>
-                                <p class="card-text ">
-                                    
-                                </p>
+                                <p class="card-text "></p>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="card-footer" style="background-color:#D7F7E7">
                                 <p class="card-text">
-                                    <a class="btn btn-success text-white bid-button" style="width:60%" onclick="openBidModal('@item.LotNumber')">Place Bid</a>
+                                    <button class="btn btn-success text-white bid-button" style="width:60%" id="bidButton-@item.LotNumber" onclick="openBidModal('@item.LotNumber')">Place Bid</button>
                                     <span id="timer-@item.LotNumber"></span>
                                 </p>
                             </div>
@@ -152,7 +153,7 @@
             </div>
 
             <script>
-                startTimer("@item.LotNumber", 300);
+                startTimer("@item.LotNumber", 60);
                 updateBidButton("@item.LotNumber");
             </script>
         }

@@ -229,41 +229,12 @@ namespace eAuction_touchdown.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<decimal>("BidderAmount")
-                        .HasColumnType("numeric");
-
-                    b.Property<int?>("BidderId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("BidderName")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("timestamp without time zone");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("BidderId");
 
                     b.ToTable("Bids");
-                });
-
-            modelBuilder.Entity("eAuction_touchdown.Models.Bidder", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Bidders");
                 });
 
             modelBuilder.Entity("eAuction_touchdown.Models.Vehicle", b =>
@@ -275,9 +246,6 @@ namespace eAuction_touchdown.Migrations
 
                     b.Property<DateTime>("BidEndTime")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<decimal>("BidderAmount")
-                        .HasColumnType("numeric");
 
                     b.Property<string>("Discription")
                         .HasColumnType("text");
@@ -357,15 +325,6 @@ namespace eAuction_touchdown.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("eAuction_touchdown.Models.Bid", b =>
-                {
-                    b.HasOne("eAuction_touchdown.Models.Bidder", "Bidder")
-                        .WithMany()
-                        .HasForeignKey("BidderId");
-
-                    b.Navigation("Bidder");
                 });
 #pragma warning restore 612, 618
         }

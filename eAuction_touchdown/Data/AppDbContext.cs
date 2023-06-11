@@ -18,6 +18,7 @@ namespace eAuction_touchdown.Data
 		
 
 		public DbSet<Vehicle> Vehicles { get; set; }
-    
+       
+
     }
 }
