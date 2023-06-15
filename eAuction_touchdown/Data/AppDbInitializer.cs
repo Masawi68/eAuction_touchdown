@@ -20,9 +20,9 @@ namespace eAuction_touchdown.Data
 				//Vehicles
 				if (!context.Vehicles.Any())
 				{
-					context.Vehicles.AddRange(new List<Vehicle>()
+					context.Vehicles.AddRange(new List<Vehicles>()
 					{
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 028,
 							ProductPicURL = "https://media-ed.s3.amazonaws.com/Media/Vehicles/cars/Benz.jpg",
@@ -33,7 +33,7 @@ namespace eAuction_touchdown.Data
 							Model = "B74i",
 							StartBidPrice = 2000.00
 						},
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 029,
 							ProductPicURL = "https://media-ed.s3.amazonaws.com/Media/Vehicles/cars/BMW.jpg",
@@ -44,7 +44,7 @@ namespace eAuction_touchdown.Data
 							Model = "i359z",
 							StartBidPrice = 2000.00
 						},
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 030,
 							ProductPicURL = "https://media-ed.s3.amazonaws.com/Media/Vehicles/cars/Ferari.jpg",
@@ -55,7 +55,7 @@ namespace eAuction_touchdown.Data
 							Model = "F23",
 							StartBidPrice = 10000.00
 						},
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 031,
 							ProductPicURL = "https://media-ed.s3.amazonaws.com/Media/Vehicles/Trucks/Chevrolet.jpg",
@@ -66,7 +66,7 @@ namespace eAuction_touchdown.Data
 							Model = "Tere 0.4",
 							StartBidPrice = 10000.00
 						},
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 032,
 							ProductPicURL ="https://media-ed.s3.amazonaws.com/Media/Vehicles/Trucks/Chevrolet_2.jpg",
@@ -77,7 +77,7 @@ namespace eAuction_touchdown.Data
 							Model = "clare",
 							StartBidPrice = 1000.00
 						},
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 033,
 							ProductPicURL = "https://media-ed.s3.amazonaws.com/Media/Vehicles/Trucks/Chevrolet_3.jpg",
@@ -88,7 +88,7 @@ namespace eAuction_touchdown.Data
 							Model = "Rev-22",
 							StartBidPrice = 12000.00
 						},
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 034,
 							ProductPicURL = "https://media-ed.s3.amazonaws.com/Media/Vehicles/MotorCycle/harley-davidson.jpg",
@@ -99,7 +99,7 @@ namespace eAuction_touchdown.Data
 							Model = "BTF19",
 							StartBidPrice = 1500.00
 						},
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 035,
 							ProductPicURL = "https://media-ed.s3.amazonaws.com/Media/Vehicles/MotorCycle/Honda.jpg",
@@ -110,7 +110,7 @@ namespace eAuction_touchdown.Data
 							Model = "Ducati",
 							StartBidPrice = 1200.00
 						},
-						new Vehicle()
+						new Vehicles()
 						{
 							LotNumber = 036,
 							ProductPicURL = "https://media-ed.s3.amazonaws.com/Media/Vehicles/cars/Ferari.jpg",

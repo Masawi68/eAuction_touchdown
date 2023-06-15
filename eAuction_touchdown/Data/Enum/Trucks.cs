@@ -1,11 +1,10 @@
-﻿using eAuction_touchdown.Data.Enum;
-using Microsoft.VisualBasic;
-using System;
+﻿using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
+using System;
 
-namespace eAuction_touchdown.Models
+namespace eAuction_touchdown.Data.Enum
 {
-    public class Vehicles
+	public class Trucks
 	{
 		[Key]
 		public int Id { get; set; }
@@ -17,10 +16,8 @@ namespace eAuction_touchdown.Models
 		public string Make { get; set; }
 		public string Model { get; set; }
 		public double StartBidPrice { get; set; }
-   
-        public DateTime BidEndTime { get; set; }
 
+		public DateTime BidEndTime { get; set; }
 
-
-    }
+	}
 }

@@ -1,11 +1,16 @@
-﻿@model Vehicle
+﻿@model Vehicles
 @{
 	ViewData["Title"] = "Add new Vehicle";
 }
 <div class="container">
-	<div class="col-12 col-md-6">
+	<div class="col-12 col-md-6 offset-md-3">
 		<div class="align-content-center">
 			<h3 class="display-4" style="font-size:larger; font-weight:bolder; color:green">Add new Vehicle</h3>
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong>Congratulations</strong> You have added a new vehicle successfully.<br/>
+				Click here to view the details
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
 			<form method="post" asp-action="AddNewVehicle" asp-controller="Vehicles">
 				<div class="form-group">
 					<label asp-for="LotNumber"></label>

@@ -1,4 +1,5 @@
-﻿using eAuction_touchdown.Models;
+﻿using eAuction_touchdown.Data.Enum;
+using eAuction_touchdown.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,8 +18,8 @@ namespace eAuction_touchdown.Data
 		}
 		
 
-		public DbSet<Vehicle> Vehicles { get; set; }
-       
+		public DbSet<Vehicles> Vehicles { get; set; }
+		public DbSet<Trucks> Trucks { get; set; }
 
-    }
+	}
 }

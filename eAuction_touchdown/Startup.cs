@@ -38,6 +38,8 @@ namespace eAuction_touchdown
 
 			services.AddScoped<IAccountRepository, AccountRepository>();
 
+			services.AddScoped<VehicleRepository, VehicleRepository>();
+
 			services.Configure<IdentityOptions>(options => 
 			{
 				options.Password.RequiredLength = 5;
