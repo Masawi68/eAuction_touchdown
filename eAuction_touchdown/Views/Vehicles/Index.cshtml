@@ -42,8 +42,8 @@
                     clearInterval(intervalId);
                     timerElement.textContent = "Expired";
 
-                    var bidButton = $('#bidButton-' + lotNumber);
-                    bidButton.prop('disabled', true);
+                    // Redirect to the payment page
+                    window.location.href = "@Url.Action("Payment", "Vehicles")"; // Replace with your actual payment page URL
                 }
             }, 1000);
         }

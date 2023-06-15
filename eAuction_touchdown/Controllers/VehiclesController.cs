@@ -57,5 +57,17 @@ namespace eAuction_touchdown.Controllers
 			}
 			return View();
 		}
-	}
+        
+
+        public ActionResult Payment()
+        {
+            // Logic for the payment action
+            // Return the corresponding view or perform the necessary operations
+
+            return View();
+        }
+
+
+
+    }
 }
