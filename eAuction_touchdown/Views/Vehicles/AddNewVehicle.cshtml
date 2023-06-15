@@ -6,11 +6,18 @@
 	<div class="col-12 col-md-6 offset-md-3">
 		<div class="align-content-center">
 			<h3 class="display-4" style="font-size:larger; font-weight:bolder; color:green">Add new Vehicle</h3>
-			<div class="alert alert-success alert-dismissible fade show" role="alert">
-				<strong>Congratulations</strong> You have added a new vehicle successfully.<br/>
-				Click here to view the details
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
+			@if (ViewBag.IsSuccess)
+			{
+				<div class="alert alert-success alert-dismissible fade show" role="alert">
+					<strong>Congratulations</strong> You have added a new vehicle successfully.<br />
+					@*Click <a asp-controller="Vehicle" asp-action="GetVehicle" asp-route-id="@ViewBag.VehicleId">here</a>  to view the details*@
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span arial-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+			}
+			
 			<form method="post" asp-action="AddNewVehicle" asp-controller="Vehicles">
 				<div class="form-group">
 					<label asp-for="LotNumber"></label>

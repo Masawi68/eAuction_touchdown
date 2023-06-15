@@ -37,5 +37,10 @@ namespace eAuction_touchdown.Repository
 
 			return newVehicle.Id;
 		}
+
+		internal object GetVehicleById(int id)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

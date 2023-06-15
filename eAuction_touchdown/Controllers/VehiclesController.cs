@@ -33,16 +33,28 @@ namespace eAuction_touchdown.Controllers
 
 			return View(allVehicles);
 		}
+		[Route("vehicle-details/{id}", Name = "vehicleDetailsRoute")]
 
-		public ViewResult AddNewVehicle()
+		public ViewResult GetVehicle(int id)
 		{
+			var data = _vehicleRepository.GetVehicleById(id);
+			return View(data);
+		}
+		public ViewResult AddNewVehicle(bool isSuccess = false, int vehicleId = 0)
+		{
+			ViewBag.IsSuccess = isSuccess;
+			ViewBag.VehicleId = vehicleId;	
 			return View();
 		}
 
 		[HttpPost]
-		public ViewResult AddNewVehicle(Vehicles vehicle)
+		public IActionResult AddNewVehicle(Vehicles vehicle)
 		{
-			_vehicleRepository.AddNewVehicle(vehicle);
+			int id = _vehicleRepository.AddNewVehicle(vehicle);
+			if (id > 0)
+			{
+				return RedirectToAction(nameof(AddNewVehicle), new {isSuccess = true , VehicleId = id});
+			}
 			return View();
 		}
 	}
