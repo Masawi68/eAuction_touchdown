@@ -1,0 +1,69 @@
+﻿@model Vehicle
+@{
+	ViewData["Title"] = "Add new Vehicle";
+}
+<div class="container">
+	<div class="col-12 col-md-6">
+		<div class="align-content-center">
+			<h3 class="display-4" style="font-size:larger; font-weight:bolder; color:green">Add new Vehicle</h3>
+			<form method="post" asp-action="AddNewVehicle" asp-controller="Vehicles">
+				<div class="form-group">
+					<label asp-for="LotNumber"></label>
+					<input asp-for="LotNumber" class="form-control" />
+				</div>
+
+				<div class="form-group">
+					<label asp-for="ProductPicURL"></label>
+					<input asp-for="ProductPicURL" class="form-control" />
+				</div>
+
+				<div class="form-group">
+					<label asp-for="VCategory"></label>
+					<input asp-for="VCategory" class="form-control" />
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="Description"></label>
+					<textarea asp-for="Description" class="form-control"></textarea>
+				</div>
+
+
+
+				<div class="form-group">
+					<label asp-for="Year"></label>
+					<input asp-for="Year" class="form-control" />
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="Make"></label>
+					<input asp-for="Make" class="form-control" />
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="Model"></label>
+					<input asp-for="Model" class="form-control" />
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="StartBidPrice"></label>
+					<input asp-for="StartBidPrice" class="form-control" />
+				</div>
+
+
+				<div class="form-group">
+					<label asp-for="BidEndTime"></label>
+					<input asp-for="BidEndTime" class="form-control" />
+				</div>
+
+				<div class="form-group">
+					<input type="submit" value="Add Vehicle" class="btn btn-primary" />
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,4 +1,5 @@
 ﻿using eAuction_touchdown.Data;
+using eAuction_touchdown.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,5 +30,16 @@ namespace eAuction_touchdown.Controllers
 
             return View(allVehicles);
         }
+        public ViewResult AddNewVehicle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult AddNewVehicle(Vehicle vehicle)
+        {
+            return View();
+        }
     }
+    
 }

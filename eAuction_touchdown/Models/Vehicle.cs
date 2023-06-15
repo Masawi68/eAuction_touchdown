@@ -12,7 +12,7 @@ namespace eAuction_touchdown.Models
 		public int LotNumber { get; set; }
 		public string ProductPicURL { get; set; }
 		public VCategory VCategory { get; set; }
-		public string Discription { get; set; }
+		public string Description { get; set; }
 		public DateFormat Year { get; set; }
 		public string Make { get; set; }
 		public string Model { get; set; }
